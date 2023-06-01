@@ -77,7 +77,7 @@ async function scaleContainer(client) {
     const { resources: offers } = await client.offers.readAll().fetchAll();
 
     const newRups = 500;
-    for (var offer of offers) {
+    for (let offer of offers) {
       if (containerDefinition._rid !== offer.offerResourceId) {
         continue;
       }
@@ -100,15 +100,8 @@ async function scaleContainer(client) {
 }
 
 /**
- * Create family item if it does not exist
+ * Create user if it does not exist
  */
-// async function createUser(userBody) {
-//   const { item } = await client
-//     .database(databaseId)
-//     .container(containerId)
-//     .items.upsert(userBody)
-//   console.log(`Created family item with id:\n${userBody.id}\n`)
-// }
 async function createUser(userBody) {
   const { item } = await client
     .database(databaseId)
@@ -123,17 +116,6 @@ async function createUser(userBody) {
 async function queryContainer() {
   console.log(`Querying container:\n${config.container.id}`)
 
-  // query to return all children in a family
-  // Including the partition key value of country in the WHERE filter results in a more efficient query
-  // const querySpec = {
-  //   query: 'SELECT VALUE r.children FROM root r WHERE r.partitionKey = @country',
-  //   parameters: [
-  //     {
-  //       name: '@country',
-  //       value: 'USA'
-  //     }
-  //   ]
-  // }
   const querySpec = {
     query: 'SELECT * FROM root r WHERE r.fName = @userFName AND r.employment[0].role = @role',
     "parameters": [
@@ -147,7 +129,7 @@ async function queryContainer() {
     .container(containerId)
     .items.query(querySpec)
     .fetchAll()
-  for (var queryResult of results) {
+  for (let queryResult of results) {
     let resultString = JSON.stringify(queryResult)
     console.log(`\tQuery returned ${resultString}\n`)
   }
