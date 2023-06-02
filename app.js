@@ -184,19 +184,24 @@ function exit(message) {
   process.stdin.on('data', process.exit.bind(process, 0))
 }
 
-createDatabase()
-  .then(() => readDatabase(client))
-  // .then(() => createContainer())
-  .then(() => readContainer(client))
-  // .then(() => scaleContainer(client))
-  .then(() => createUser(config.items.Eric))
-  .then(() => queryContainer())
-  // .then(() => deleteUser(config.items.Tom))
-  // .then(() => replaceUser(config.items.Eric))
+// createDatabase()
+//   .then(() => readDatabase(client))
+//   // .then(() => createContainer())
+//   .then(() => readContainer(client))
+//   // .then(() => scaleContainer(client))
+//   .then(() => createUser(config.items.Eric))
+//   .then(() => queryContainer())
+//   // .then(() => deleteUser(config.items.Tom))
+//   // .then(() => replaceUser(config.items.Eric))
 
-  .then(() => {
-    exit(`Completed successfully`)
-  })
-  .catch(error => {
-    exit(`Completed with error ${JSON.stringify(error)}`)
-  })
+//   .then(() => {
+//     exit(`Completed successfully`)
+//   })
+//   .catch(error => {
+//     exit(`Completed with error ${JSON.stringify(error)}`)
+//   })
+
+module.exports = {
+  createUser,
+  queryContainer,
+}
