@@ -13,5 +13,8 @@
         "dotenv": "^16.1.3",
         "express": "^4.18.2",
         "nodemon": "^2.0.22"
+    },
+    "devDependencies": {
+        "prettier": "^3.0.0-alpha.6"
     }
 }
