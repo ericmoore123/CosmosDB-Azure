@@ -136,7 +136,7 @@ async function queryContainer(userId) {
 }
 
 /**
- * Replace the item by ID.
+ * Replace the user by ID.
  */
 async function replaceUser(userBody) {
     console.log(`Replacing User:\n${userBody.id}\n`)

@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+const ejs = require("ejs");
+
 const { createUser, queryContainer } = require('./src/app');
 const ItemSchema = require('./src/model/Item');
 
@@ -24,7 +26,10 @@ app.post('/submitData', async(req, res) => {
     let newItem = new ItemSchema(id, fname, lname, empStatus, empRole, employer);
     createUser(newItem);
 
+    // Query most recently created db item      
     res.send(await queryContainer());
+    //     Redirect back to home page with query data below form?
+    //     res.render('/', { data: await queryContainer() });
 });
 
 
