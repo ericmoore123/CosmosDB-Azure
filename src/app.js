@@ -128,7 +128,7 @@ async function queryContainer(userId) {
         .items.query(querySpec)
         .fetchAll()
 
-    return resources;
+    return resources[0];
     // for (let queryResult of results) {
     //     let resultString = JSON.stringify(queryResult)
     //     console.log(`\tQuery returned ${resultString}\n`)

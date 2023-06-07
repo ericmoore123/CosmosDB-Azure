@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('./components/header'); %>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Azure CosmosDB </h1>
+        <form class="p-2 border rounded w-50 mb-5" action="submitData" method="POST">
+            <div class="form-row">
+                <input required class="p-1 my-2" type="text" name="fname" id="fname" placeholder="Frist name">
+                <input required class="p-1 my-2" type="text" name="lname" id="lname" placeholder="Last name">
+            </div>
+            <div class="form-row">
+                <p class="my-0"><strong>Employment Details:</strong></p>
+                <input required class="p-1 my-2" placeholder="Employment status" type="text" name="empStatus" id="empStatus">
+                <input required class="p-1 my-2" placeholder="Position" type="text" name="empRole" id="empRole">
+                <input required class="p-1 my-2" placeholder="Employer" type="text" name="employer" id="employer">
+            </div>
+
+            <input class="btn btn-primary" type="submit" value="Submit" />
+        </form>
+
+        <% if(locals.data) { %>
+            <p><strong>Newest DB Data:</strong></p>
+            <div>
+                <%= data.res %>
+            </div>
+            <% } %>
+
+    </div>
+</body>
+
+<footer>
+    <%- include('./components/footer'); %>
+</footer>
+
+</html>
